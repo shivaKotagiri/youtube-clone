@@ -2,6 +2,7 @@
 import axios from "axios";
 import { Search } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface VideoItem {
   id: string;
@@ -31,6 +32,11 @@ interface SearchBarProps {
 function SearchBar({ setSearchData }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isSearching, setIsSearching] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  function gotoThumbnails() {
+    navigate("/");
+  }
 
   async function handleSearch(): Promise<void> {
     if (searchQuery.trim().length === 0 || isSearching) return;
@@ -65,15 +71,15 @@ function SearchBar({ setSearchData }: SearchBarProps) {
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       handleSearch();
+      gotoThumbnails();
     }
   };
 
   return (
     <>
       <div className="flex bg-[#252831] items-center justify-between border border-gray-400 rounded-3xl p-1 w-3/4 max-w-full md:max-w-[450px]">
-        <input type="text" placeholder="Search..." className="w-full focus:outline-none p-1.5" value={searchQuery} onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setSearchQuery(e.target.value)}
-        onKeyPress={handleKeyPress} disabled={isSearching}/>
-        <div className={`flex justify-center items-center mx-2 cursor-pointer text-gray-300 ${isSearching ?'opacity-50' : ''}`} onClick={handleSearch}><Search /></div>
+        <input type="text" placeholder="Search..." className="w-full bg-transparent text-white focus:outline-none p-1.5" value={searchQuery} onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setSearchQuery(e.target.value)} onKeyPress={handleKeyPress} disabled={isSearching} />
+        <div className={`flex justify-center items-center mx-2 cursor-pointer text-gray-300 ${isSearching?'opacity-50':''}`} onClick={() => {handleSearch();gotoThumbnails();}}><Search /></div>
       </div>
     </>
   );
