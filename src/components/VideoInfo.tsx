@@ -1,4 +1,3 @@
-import Profile from '../assets/user_profile.jpg'
 import converter from '../converter';
 
 interface YouTubeChannel {
@@ -28,7 +27,7 @@ function VideoInfo({ channelInfo }: VideoInfoProps) {
 
   const channelTitle = channelInfo?.snippet?.title || 'Channel Name';
 
-  const channelImage = channelInfo?.snippet?.thumbnails?.default?.url || Profile;
+  const channelImage = channelInfo?.snippet?.thumbnails?.default?.url || 'https://via.placeholder.com/150';
 
   return (
     <>
