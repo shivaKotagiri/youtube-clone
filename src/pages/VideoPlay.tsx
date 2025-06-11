@@ -95,7 +95,7 @@ function VideoPlay(): JSX.Element {
       <div className='max-w-screen-xl mx-auto'>
         <div className='p-3 md:p-5'>
           <div className='w-full aspect-video'>
-            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title={videoData?.snippet?.title || "Video title unavailable"} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className='rounded-lg shadow-md'>
+            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=1`} title={videoData?.snippet?.title || "Video title unavailable"} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className='rounded-lg shadow-md'>
             </iframe>
           </div>
 
